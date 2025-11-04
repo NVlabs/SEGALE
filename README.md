@@ -9,20 +9,33 @@ Functionally, it is similar to [mwerSegmenter](https://github.com/cservan/MWERal
 If you use this tool for your work, please cite the following paper:
 
 ```
-@misc{wang2025extendingautomaticmachinetranslation,
-      title={Extending Automatic Machine Translation Evaluation to Book-Length Documents}, 
-      author={Kuang-Da Wang and Shuoyang Ding and Chao-Han Huck Yang and Ping-Chun Hsieh and Wen-Chih Peng and Vitaly Lavrukhin and Boris Ginsburg},
-      year={2025},
-      eprint={2509.17249},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2509.17249}, 
+@inproceedings{wang-etal-2025-extending,
+    title = "Extending Automatic Machine Translation Evaluation to Book-Length Documents",
+    author = "Wang, Kuang-Da  and
+      Ding, Shuoyang  and
+      Yang, Chao-Han Huck  and
+      Hsieh, Ping-Chun  and
+      Peng, Wen-Chih  and
+      Lavrukhin, Vitaly  and
+      Ginsburg, Boris",
+    editor = "Christodoulopoulos, Christos  and
+      Chakraborty, Tanmoy  and
+      Rose, Carolyn  and
+      Peng, Violet",
+    booktitle = "Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing",
+    month = nov,
+    year = "2025",
+    address = "Suzhou, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.emnlp-main.1645/",
+    pages = "32311--32327",
+    ISBN = "979-8-89176-332-6"
 }
 ```
 
 ## Install
 
-The best way to reproduce our experiment environment to the maximum extend possible is to rebuild the docker container with the Dockerfile and run everything inside Docker, but installing this package in other environments should also work.
+The best way to reproduce our experiment environment to the maximum extent possible is to rebuild the docker container with the Dockerfile and run everything inside Docker, but installing this package in other environments should also work.
 
 Depending on how you install, you may want to make some of the following edits:
 
@@ -32,8 +45,8 @@ Depending on how you install, you may want to make some of the following edits:
 Installation itself is very easy:
 
 ```
-git clone --recurse-submodules https://github.com/nvlabs/segale /path/to/repo
-cd /path/to/repo
+git clone --recurse-submodules https://github.com/nvlabs/SEGALE
+cd SEGALE
 pip install -e .
 ```
 
@@ -49,7 +62,12 @@ huggingface-cli download Unbabel/wmt22-cometkiwi-da
 
 ## Usage
 
-We'll introduce the usage of those commands using the WMT 2024 metrics shared task data as example.
+We'll introduce the usage of those commands using the WMT 2024 metrics shared task data as example. You can access our reformatted and augmented WMT24 dataset [here](https://huggingface.co/datasets/rl-bandits-lab/SEGALE-WMT24). To proceed with the subsequent steps, you need to download the dataset inside this repo:
+
+```
+mkdir -p data
+git clone https://huggingface.co/datasets/rl-bandits-lab/SEGALE-WMT24 data
+```
 
 ### Step 1: Src-Ref-Tgt Alignment (`segale-align`)
 
@@ -90,6 +108,8 @@ This will generate:
 - `result_aligned_spacy_GPT-4.jsonl`: Document-level aggregated results.
 
 ## Reproducing Experimental Results in the Paper
+
+Before you start, follow the instructions under "Usage" section to checkout the necessary datasets.
 
 ### Automate Experiments
 
